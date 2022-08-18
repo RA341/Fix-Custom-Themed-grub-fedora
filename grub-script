@@ -1,9 +1,24 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-if [ "$EUID" -ne 0 ]
-  then echo "Please run as root"
-  exit
-fi
+#if [ "$EUID" -ne 0 ]
+#  then echo "Please run as root"
+#  exit
+#fi
+
+grub_path=/etc/default/grub
+
+grub_config=/boot/grub2/grub.cfg
+
+echo 'Changing GRUB_TERMINAL_OUTPUT="console" to #GRUB_TERMINAL_OUTPUT="console"'
+terminal='GRUB_TERMINAL_OUTPUT="console"'
+terminal_fix='#GRUB_TERMINAL_OUTPUT="console"'
+sed -i "s/${terminal}/${terminal_fix}/g" /home/ra21/Documents/Fix-grub-in-fedora/test
+echo "Success!"
 
 
-https://www.taniarascia.com/how-to-create-and-use-bash-scripts/
+echo 'Changing GRUB_ENABLE_BLSCFG="true" to GRUB_ENABLE_BLSCFG="false"'
+blscfg='GRUB_ENABLE_BLSCFG="true"'
+blscfg_fix='GRUB_ENABLE_BLSCFG="false"'
+sed -i "s/${blscfg}/${blscfg}/g" /home/ra21/Documents/Fix-grub-in-fedora/test
+echo "Success!"
+

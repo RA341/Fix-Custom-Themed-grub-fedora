@@ -1,13 +1,15 @@
 #!/bin/bash
 
-#if [ "$EUID" -ne 0 ]
-#  then echo "Please run as root"
-#  exit
-#fi
+if [ "$EUID" -ne 0 ];then 
+    echo "Please run as root and try again"
+  exit 1
+fi
 
 grub_path=/etc/default/grub
 
 grub_config=/boot/grub2/grub.cfg
+
+test=/home/ra21/Documents/Fix-grub-in-fedora/grub.cfg
 
 echo 'Changing GRUB_TERMINAL_OUTPUT="console" to #GRUB_TERMINAL_OUTPUT="console"'
 terminal='GRUB_TERMINAL_OUTPUT="console"'
@@ -22,3 +24,12 @@ blscfg_fix='GRUB_ENABLE_BLSCFG="false"'
 sed -i "s/${blscfg}/${blscfg}/g" /home/ra21/Documents/Fix-grub-in-fedora/test
 echo "Success!"
 
+read -p "Would you like to generate new grub config with the new changes(N or y): " ques
+
+if [[ "$ques" = "y" ]];then
+    echo "generating new grub file"
+    grub2-mkconfig -o "$test"
+else
+    echo "Exiting"
+    exit
+fi

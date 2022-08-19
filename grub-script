@@ -14,21 +14,21 @@ test=/home/ra21/Documents/Fix-grub-in-fedora/grub.cfg
 echo 'Changing GRUB_TERMINAL_OUTPUT="console" to #GRUB_TERMINAL_OUTPUT="console"'
 terminal='GRUB_TERMINAL_OUTPUT="console"'
 terminal_fix='#GRUB_TERMINAL_OUTPUT="console"'
-sed -i "s/${terminal}/${terminal_fix}/g" /home/ra21/Documents/Fix-grub-in-fedora/test
+sed -i "s/${terminal}/${terminal_fix}/g" $grub_path
 echo "Success!"
 
 
 echo 'Changing GRUB_ENABLE_BLSCFG="true" to GRUB_ENABLE_BLSCFG="false"'
 blscfg='GRUB_ENABLE_BLSCFG="true"'
 blscfg_fix='GRUB_ENABLE_BLSCFG="false"'
-sed -i "s/${blscfg}/${blscfg}/g" /home/ra21/Documents/Fix-grub-in-fedora/test
+sed -i "s/${blscfg}/${blscfg_fix}/g" $grub_path
 echo "Success!"
 
 read -p "Would you like to generate new grub config with the new changes(N or y): " ques
 
 if [[ "$ques" = "y" ]];then
     echo "generating new grub file"
-    grub2-mkconfig -o "$test"
+    grub2-mkconfig -o "$grub_config"
 else
     echo "Exiting"
     exit

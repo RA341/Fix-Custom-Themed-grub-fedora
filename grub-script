@@ -19,8 +19,8 @@ echo "Success!"
 
 
 echo 'Changing GRUB_ENABLE_BLSCFG="true" to GRUB_ENABLE_BLSCFG="false"'
-blscfg='GRUB_ENABLE_BLSCFG="true"'
-blscfg_fix='GRUB_ENABLE_BLSCFG="false"'
+blscfg='GRUB_ENABLE_BLSCFG=true'
+blscfg_fix='GRUB_ENABLE_BLSCFG=false'
 sed -i "s/${blscfg}/${blscfg_fix}/g" $grub_path
 echo "Success!"
 

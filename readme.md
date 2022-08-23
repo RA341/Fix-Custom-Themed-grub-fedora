@@ -26,6 +26,9 @@ You can manually choose to do this on your own, if you are not comfortable with 
 
 And then generates a new grub config file
 
+# To-do
+
+check if a grub file already has the changes and skip accordingly 
 
 # Disclaimer/Warning
 This script was made by a linux noob, and was made for personal use,This has the potential to mess up your system from booting so use it at your own risk
